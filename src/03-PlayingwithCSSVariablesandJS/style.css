@@ -1,0 +1,13 @@
+:root {
+  --base: hsla(355, 90%, 53%, 0.938);
+  --blur: 1px;
+  --space: 10px;
+}
+img {
+  background-color: var(--base);
+  padding: var(--space);
+  filter: blur(var(--blur));
+}
+h1 {
+  color: var(--base);
+}

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="Main.css" />
+  </head>
+  <body>
+    <div id="app">
+      <a href="/index.html" target="_self">Home Page</a>
+      <div class="container">
+        <h1>محاسبه BMI</h1>
+
+        <form>
+          <div>
+            <label for="height">قد:</label>
+            <input
+              id="height"
+              type="text"
+              class="form-control"
+              placeholder="سانتی‌متر"
+            />
+          </div>
+          <div>
+            <label for="weight">وزن:</label>
+            <input
+              id="weight"
+              type="text"
+              class="form-control"
+              placeholder="کیلوگرم"
+            />
+          </div>
+
+          <button class="btn btn-success w-100">محاسبه</button>
+        </form>
+
+        <p id="result"></p>
+      </div>
+    </div>
+
+    <script src="./Main.js"></script>
+  </body>
+</html>
