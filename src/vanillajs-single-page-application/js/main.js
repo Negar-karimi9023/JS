@@ -26,65 +26,29 @@ document.querySelector("#app").onclick = (event) => {
   }
 };
 
-// تمام صفحات را گلوبال اسکن می‌کنیم
-const pages = import.meta.glob(
-  "/src/vanillajs-single-page-application/js/pages/*.js"
-);
-
 window.addEventListener("popstate", () => {
-  let path = window.location.hash.substring(2); // حذف '#/'
+  let path = window.location.hash;
+
+  path = path.substring(1, path.length);
 
   for (const rout of routes) {
     if (path === rout.path) {
-      const filePath = `/src/vanillajs-single-page-application/js/pages/${rout.component}.js`;
+      const page = `/vanillajs-single-page-application/js/pages/${rout.component}.js`;
+      // const page = new URL(`./pages/${rout.component}.js`, import.meta.url)
+      //   .href;
+      console.log("Importing page:", page);
 
-      console.log("Importing page:", filePath);
-
-      if (pages[filePath]) {
-        import(pages[filePath])
-          .then((module) => {
-            const content = module.default;
-            console.log("test:" + content);
-            document.querySelector("#content").innerHTML = content;
-          })
-          .catch((err) => {
-            console.error("خطا در بارگذاری ماژول:", err);
-            document.querySelector("#content").innerHTML =
-              "<h1>صفحه یافت نشد</h1>";
-          });
-      } else {
-        console.warn("صفحه‌ای با این مسیر پیدا نشد:", filePath);
-        document.querySelector("#content").innerHTML = "<h1>صفحه یافت نشد</h1>";
-      }
-
-      break;
+      import(page)
+        .then((module) => {
+          const content = module.default;
+          console.log(content);
+          document.querySelector("#content").innerHTML = module.default;
+        })
+        .catch((err) => {
+          console.error("خطا در بارگذاری ماژول:", err);
+          document.querySelector("#content").innerHTML =
+            "<h1>صفحه یافت نشد</h1>";
+        });
     }
   }
 });
-
-// window.addEventListener("popstate", () => {
-//   let path = window.location.hash;
-
-//   path = path.substring(1, path.length);
-
-//   for (const rout of routes) {
-//     if (path === rout.path) {
-//       const page = `/vanillajs-single-page-application/js/pages/${rout.component}.js`;
-//       // const page = new URL(`./pages/${rout.component}.js`, import.meta.url)
-//       //   .href;
-//       console.log("Importing page:", page);
-
-//       import(page)
-//         .then((module) => {
-//           const content = module.default;
-//           console.log(content);
-//           document.querySelector("#content").innerHTML = module.default;
-//         })
-//         .catch((err) => {
-//           console.error("خطا در بارگذاری ماژول:", err);
-//           document.querySelector("#content").innerHTML =
-//             "<h1>صفحه یافت نشد</h1>";
-//         });
-//     }
-//   }
-// });
