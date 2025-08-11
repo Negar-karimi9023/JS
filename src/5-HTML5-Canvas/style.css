@@ -1,0 +1,17 @@
+.canvasArea {
+  border: 5px solid black;
+  border-radius: 15px;
+}
+#btnClearCanvas {
+  background-color: blueviolet;
+  margin: 10px;
+  width: 150px;
+  height: 40px;
+  border-radius: 5px;
+  color: white;
+  font-size: large;
+}
+#btnClearCanvas:hover {
+  background-color: rgb(36, 11, 59);
+  cursor: pointer;
+}

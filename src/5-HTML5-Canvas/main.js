@@ -1,27 +1,43 @@
 const myCanvas = document.getElementById("myCanvas");
+const btnClearCanvas = document.getElementById("btnClearCanvas");
 const ctx = myCanvas.getContext("2d");
-myCanvas.offsetWidth = window.innerWidth;
-myCanvas.offsetHeight = window.innerHeight;
+myCanvas.width = window.innerWidth;
+myCanvas.height = window.innerHeight;
 
-ctx.strokeStyle = "Red";
-ctx.lineWidth = "2px";
+let gradient = ctx.createLinearGradient(0, 0, 200, 0);
+
+gradient.addColorStop(0, "green");
+gradient.addColorStop(0.7, "blue");
+gradient.addColorStop(1, "pink");
+ctx.strokeStyle = gradient;
+ctx.lineJoin = "round";
+ctx.lineCap = "round";
+ctx.lineWidth = 5;
+let isDrawing = false;
 
 let lastX = 0;
 let lastY = 0;
 
-let isDraw = false;
-
 function draw(e) {
-  if (!isDraw) return;
+  if (!isDrawing) return;
   console.log(e);
-  console.log(isDraw);
   ctx.beginPath();
-  ctx.lineTo(e.offsetX, e.offsetY);
   ctx.moveTo(lastX, lastY);
+  ctx.lineTo(e.offsetX, e.offsetY);
   ctx.stroke();
+  [lastX, lastY] = [e.offsetX, e.offsetY];
 }
 
-myCanvas.addEventListener("mousemove", draw);
-myCanvas.addEventListener("mousedown", () => (isDraw = true));
-myCanvas.addEventListener("mouseup", () => (isDraw = false));
-myCanvas.addEventListener("mouseout", () => (isDraw = false));
+function clearCanvasArea() {
+  ctx.clearRect(0, 0, myCanvas.width, myCanvas.height);
+}
+
+document.addEventListener("mousemove", draw);
+document.addEventListener("mousedown", (e) => {
+  isDrawing = true;
+  [lastX, lastY] = [e.offsetX, e.offsetY];
+});
+document.addEventListener("mouseup", () => (isDrawing = false));
+document.addEventListener("mouseout", () => (isDrawing = false));
+
+btnClearCanvas.addEventListener("click", clearCanvasArea);
