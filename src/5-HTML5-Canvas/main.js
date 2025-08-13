@@ -12,7 +12,7 @@ gradient.addColorStop(1, "pink");
 ctx.strokeStyle = gradient;
 ctx.lineJoin = "round";
 ctx.lineCap = "round";
-ctx.lineWidth = 5;
+ctx.lineWidth = 9;
 let isDrawing = false;
 
 let lastX = 0;

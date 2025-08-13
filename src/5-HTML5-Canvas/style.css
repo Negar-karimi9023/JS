@@ -1,6 +1,10 @@
+body {
+  background-color: rgb(196, 185, 206);
+}
 .canvasArea {
   border: 5px solid black;
   border-radius: 15px;
+  background-color: white;
 }
 #btnClearCanvas {
   background-color: blueviolet;
