@@ -1,6 +1,9 @@
 html {
   font-family: sans-serif;
-  background: #ffc600;
+  background: #e048ee;
+}
+h1 {
+  text-align: center;
 }
 
 .inbox {

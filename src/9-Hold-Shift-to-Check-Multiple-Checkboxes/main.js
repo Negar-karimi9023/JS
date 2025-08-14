@@ -1,23 +1,30 @@
-const inbox = document.getElementById("inbox");
-let lastCheckedIndex = null;
+const boxes = document.querySelectorAll(".inbox input[type=checkbox]");
+const masterCheckBox = document.querySelector("#masterCheckBox");
 
-inbox.addEventListener("click", function (e) {
-  if (e.target.type !== "checkbox") return;
-
-  const checkboxes = [...inbox.querySelectorAll('input[type="checkbox"]')];
-  const currentIndex = checkboxes.indexOf(e.target);
-
-  // اگر Shift نگرفته یا تیک برداشته شده، فقط این رو به‌روز کن
-  if (!e.shiftKey || !e.target.checked) {
-    lastCheckedIndex = currentIndex;
-    return;
+let lastChecked = false;
+function handelCheck(e) {
+  let inBetween = false;
+  if (e.shiftKey && this.checked) {
+    boxes.forEach((box) => {
+      if (box === this || box === lastChecked) {
+        inBetween = !inBetween;
+      }
+      if (inBetween) {
+        box.checked = true;
+      }
+    });
   }
+  lastChecked = this;
+}
 
-  // انتخاب آیتم‌های بین lastChecked و currentIndex
-  const [start, end] = [lastCheckedIndex, currentIndex].sort((a, b) => a - b);
-  checkboxes.forEach((cb, i) => {
-    if (i >= start && i <= end) cb.checked = true;
-  });
+function handelMasterCheck() {
+  console.log("salam");
+  if (this.checked) {
+    boxes.forEach((box) => (box.checked = true));
+  } else {
+    boxes.forEach((box) => (box.checked = false));
+  }
+}
 
-  lastCheckedIndex = currentIndex;
-});
+boxes.forEach((box) => box.addEventListener("click", handelCheck));
+masterCheckBox.addEventListener("click", handelMasterCheck);
