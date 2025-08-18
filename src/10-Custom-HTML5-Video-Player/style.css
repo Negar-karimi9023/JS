@@ -106,7 +106,7 @@ h1 {
   width: 50%;
   background: #2176e6;
   flex: 0;
-  flex-basis: 50%;
+  flex-basis: 0%;
 }
 
 /* unholy css to style input type="range" */
