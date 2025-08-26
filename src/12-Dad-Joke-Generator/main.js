@@ -11,9 +11,20 @@ let jokeEl = document.querySelector("#joke");
 const apiURL = "https://api.api-ninjas.com/v1/dadjokes";
 
 async function getJoke() {
-  const response = await fetch(apiURL, options);
-  const data = await response.json();
-  jokeEl.innerHTML = data[0].joke;
+  try {
+    jokeEl.innerHTML = "Updating ...";
+    btnEl.disabled = true;
+    btnEl.innerText = "Lodaing ...";
+    const response = await fetch(apiURL, options);
+    const data = await response.json();
+    jokeEl.innerHTML = data[0].joke;
+    btnEl.disabled = false;
+    btnEl.innerText = "Tell me a Joke";
+  } catch (error) {
+    jokeEl.innerHTML = "An error happend";
+    btnEl.disabled = false;
+    btnEl.innerText = "Tell me a Joke";
+  }
 }
 
 btnEl.addEventListener("click", getJoke);
