@@ -1,3 +1,5 @@
+const images = document.querySelectorAll("img");
+
 function debounce(func, wait = 20, immediate = true) {
   var timeout;
   return function () {
@@ -15,8 +17,18 @@ function debounce(func, wait = 20, immediate = true) {
 }
 
 function checkSlide() {
-  //   console.log(window.scrollY);
-  console.log(window.innerHeight);
+  images.forEach((image) => {
+    const slideInAt = window.scrollY + window.innerHeight - image.height / 2;
+    const imageBottom = image.offsetTop + image.height;
+
+    const isHalfShown = slideInAt > image.offsetTop;
+    const isPastImage = window.screenY < imageBottom;
+    if (isHalfShown && isPastImage) {
+      image.classList.add("active");
+    } else {
+      image.classList.remove("active");
+    }
+  });
 }
 
 window.addEventListener("scroll", debounce(checkSlide));
