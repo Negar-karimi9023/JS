@@ -77,14 +77,14 @@ const inventorsFirstLastName = inventors.map(
 // Array.prototype.sort()
 // 3. Sort the inventors by birthdate, oldest to youngest
 const inventorsSort = inventors.sort((a, b) => (a.year > b.year ? 1 : -1));
-console.table(inventorsSort);
+//console.table(inventorsSort);
 
 // Array.prototype.reduce()
 // 4. How many years did all the inventors live all together?
 const total = inventors.reduce((total, inventor) => {
   return (total += inventor.passed - inventor.year);
 }, 0);
-console.log(total);
+//console.log(total);
 
 // 5. Sort the inventors by years lived
 const sortyear = inventors.sort((a, b) => {
@@ -93,7 +93,7 @@ const sortyear = inventors.sort((a, b) => {
   lastGuy > nextGuy ? -1 : 1;
 });
 //console.log("sortyear:");
-console.log(sortyear);
+//console.log(sortyear);
 
 // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
 // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
@@ -107,7 +107,7 @@ console.log(sortyear);
 // Sort the people alphabetically by last name
 
 const sortPepole = people.sort((a, b) => {
-  console.log(a.split(", "));
+  //console.log(a.split(", "));
   //console.log("last one: " + a);
 });
 // console.log("sortPepole" + sortPepole);
@@ -136,7 +136,7 @@ const names = ["Ali", "Fatemeh", "Mohammad", "Sara", "Reza", "Abdullah"];
 const nameLong = names
   .filter((name) => name.length > 5)
   .map((name) => name.toUpperCase());
-console.log(nameLong);
+//console.log(nameLong);
 
 //
 const peopleTest = [
@@ -145,7 +145,7 @@ const peopleTest = [
   { name: "Reza", age: 30 },
 ];
 const pep = peopleTest.filter((a) => a.age > 20).map((p) => p.name);
-console.log(pep);
+//console.log(pep);
 
 //
 const numbers = [5, -2, 8, -1, 10];
@@ -153,13 +153,13 @@ const numbers = [5, -2, 8, -1, 10];
 const sumNumbers = numbers
   .filter((n) => n > 0)
   .reduce((total, n) => (total += n), 0);
-console.log(sumNumbers);
+//console.log(sumNumbers);
 
 //
 const original = [1, 2, 3];
 console.log(original);
 const newArray = [100, ...original];
-console.log(newArray);
+//console.log(newArray);
 
 //
 const text = "hello";
@@ -167,7 +167,7 @@ const frequency = [...text].reduce((acc, char) => {
   acc[char] = (acc[char] || 0) + 1;
   return acc;
 }, {});
-console.log(frequency);
+//console.log(frequency);
 
 //شمارش تعداد تکرار هر عدد در آرایه
 const numbersTest = [1, 2, 2, 3, 3, 3, 4];
@@ -175,7 +175,7 @@ const fre = numbersTest.reduce((acc, num) => {
   acc[num] = (acc[num] || 0) + 1;
   return acc;
 }, {});
-console.log(fre);
+//console.log(fre);
 
 //فیلتر کردن فقط اعداد زوج و تبدیل به مربع
 const nums = [1, 2, 3, 4, 5, 6];
@@ -185,14 +185,14 @@ const oddNumber = nums
   })
   .map((num) => num * num);
 
-console.log(oddNumber);
+//console.log(oddNumber);
 
 //حذف حروف تکراری از رشته
 const word = "banana";
 const repetedremove = [...word].reduce((acc, char) => {
   return acc.includes(char) ? acc : acc + char;
 }, "");
-console.log(repetedremove);
+//console.log(repetedremove);
 
 //مجموع قیمت محصولات
 const products = [
@@ -204,7 +204,7 @@ const sumProduct = products.reduce((acc, product) => {
   return acc + product.price;
 }, 0);
 
-console.log(sumProduct);
+//console.log(sumProduct);
 
 //گروه‌بندی آیتم‌ها بر اساس نوع (fruit/vegetable)
 const items = [
@@ -219,48 +219,48 @@ const groupItems = items.reduce((acc, item) => {
   acc[key].push(item.name);
   return acc;
 }, {});
-console.log(groupItems);
+//console.log(groupItems);
 
 //مرتب‌سازی اعداد به صورت صعودی
 const nums1 = [5, 12, 3, 20, 8];
-console.log(nums1.sort((a, b) => a - b));
+//console.log(nums1.sort((a, b) => a - b));
 
 //مرتب‌سازی اعداد به صورت نزولی
 const nums2 = [5, 12, 3, 20, 8];
-console.log(nums1.sort((a, b) => b - a));
+//console.log(nums1.sort((a, b) => b - a));
 
 //مرتب‌سازی رشته‌ها به ترتیب حروف الفبا
 const names1 = ["Zahra", "Ali", "Mohsen", "Saba"];
-console.log(names1.sort());
+//console.log(names1.sort());
 
 //مرتب‌سازی رشته‌ها بر اساس طولشان
 const words = ["banana", "kiwi", "apple", "grape", "watermelon"];
-console.log(words.sort((a, b) => a.length - b.length));
+//console.log(words.sort((a, b) => a.length - b.length));
 
 //مرتب‌سازی اسامی بر اساس حروف آخر
 const names3 = ["Mina", "Sina", "Nima", "Rana"];
-console.log(
-  names3.sort((a, b) => {
-    const lastA = a[a.length - 1];
-    const lastB = b[b.length - 1];
-    return lastA.localeCompare(lastB);
-  })
-);
+// console.log(
+//   names3.sort((a, b) => {
+//     const lastA = a[a.length - 1];
+//     const lastB = b[b.length - 1];
+//     return lastA.localeCompare(lastB);
+//   })
+// );
 
 //تبدیل دمایی
 const celsiusTemps = [0, 20, 37, 100];
 const f = celsiusTemps.map((c) => c * 1.8 + 32);
-console.log(f);
+//console.log(f);
 
 //
 const names2 = ["علی", "زهرا", "رضا"];
 const n = names2.map((c) => (c.length % 2 !== 0 ? "آقای " + c : "خانم " + c));
-console.log(n);
+//console.log(n);
 
 //
 const numbers2 = [1, 2, 3, 4, 5, 6];
 const even2 = numbers2.filter((number) => number % 2 === 0);
-console.log(even2);
+//console.log(even2);
 
 //
 const users = [
@@ -272,12 +272,12 @@ const users = [
 const usersActive = users
   .filter((user) => user.isActive)
   .map((user) => user.name);
-console.log(usersActive);
+//console.log(usersActive);
 
 //
 const numbers3 = [10, 20, 30, 40];
 const sumnumbers3 = numbers3.reduce((acc, el) => acc + el, 0);
-console.log(sumnumbers3);
+//console.log(sumnumbers3);
 
 //
 const names4 = ["Ali", "Asghar", "Sara", "Sina", "Maryam"];
@@ -289,23 +289,23 @@ const groupingnames4 = names4.reduce((acc, el) => {
   acc[firstL].push(el);
   return acc;
 }, {});
-console.log(groupingnames4);
+//console.log(groupingnames4);
 
 //
 const sumFunc = function (a, b) {
   return a + b;
 };
-console.log(sumFunc(10, 2));
+//console.log(sumFunc(10, 2));
 
 //
 const getLength = function (el) {
   return el.length;
 };
-console.log(getLength("AliReza"));
+//console.log(getLength("AliReza"));
 
 //
 const getLengthArrow = (el) => el.length;
-console.log(getLengthArrow("AliRezaAhmadi"));
+//console.log(getLengthArrow("AliRezaAhmadi"));
 
 //فاکتوریل یک عدد
 const factorial = (el) => {
@@ -313,7 +313,7 @@ const factorial = (el) => {
   return el * factorial(el - 1);
 };
 
-console.log("فاکتوریل عدد: " + factorial(5));
+//console.log("فاکتوریل عدد: " + factorial(5));
 
 //
 const doSomething = (num, callBack) => {
@@ -322,12 +322,12 @@ const doSomething = (num, callBack) => {
 };
 
 doSomething(2, (res) => {
-  console.log("نتیجه:", res);
+  //  console.log("نتیجه:", res);
 });
 
 //عدد 5 را به صورت فوری دو برابر کن و نمایش بده.
 (function (n) {
-  return console.log(n * 2);
+  //  return console.log(n * 2);
 })(5);
 
 //
@@ -335,10 +335,33 @@ function triple(num) {
   return num * 3;
 }
 
-console.log(triple(3)); // باید بشه 9
+//console.log(triple(3)); // باید بشه 9
 //
 const sayHello = function (name) {
   return "Hello " + name;
 };
 
-console.log(sayHello("Sara")); // باید بگه: "Hello Sara"
+//console.log(sayHello("Sara")); // باید بگه: "Hello Sara"
+
+//
+
+const bands = [
+  "The Plot in You",
+  "The Devil Wears Prada",
+  "Pierce the Veil",
+  "Norma Jean",
+  "The Bled",
+  "Say Anything",
+  "The Midway State",
+  "We Came as Romans",
+  "Counterparts",
+  "Oh, Sleeper",
+  "A Skylit Drive",
+  "Anywhere But Here",
+  "An Old Dog",
+];
+
+const sortedBand = bands.sort((a, b) => {
+  return a > b ? 1 : -1;
+});
+console.log("sort bans is: ", sortedBand);
